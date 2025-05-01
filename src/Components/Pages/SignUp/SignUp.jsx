@@ -22,8 +22,8 @@ const SignUp = () => {
     setSuccess("");
 
     const url = isLogin
-      ? "http://localhost:5000/login"
-      : "http://localhost:5000/signup";
+      ? "https://ftraining-18rregde7-rakibul2580s-projects.vercel.app/login"
+      : "https://ftraining-18rregde7-rakibul2580s-projects.vercel.app/signup";
     const data = isLogin
       ? { email, password }
       : { email, password, name, age, role, gender };
