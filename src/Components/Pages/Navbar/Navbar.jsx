@@ -22,7 +22,7 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
           >
             <Link to="/" className="text-2xl font-bold text-blue-950">
-              E-Learning
+              E&Learning
             </Link>
           </motion.div>
 
