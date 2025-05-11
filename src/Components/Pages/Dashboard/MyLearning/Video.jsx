@@ -86,7 +86,7 @@ const Video = () => {
               h1="Causes of Passenger Disruption"
               h2="Intoxication: Excessive alcohol consumption can impair judgement"
               p="While many reasons may exist, most events are triggered by the below:"
-              li1="Intoxication: Excessive alcohol consumption can impair judgement and lead to disruptive behaviour"
+              li1="Intoxication: Excessive alcohol consumption can impair judgement and lead to disruptive behaviour Intoxication: Excessive alcohol consumption can impair judgement and lead to disruptive behaviour Intoxication: Excessive alcohol consumption can impair judgement and lead to disruptive behaviour Intoxication: Excessive alcohol consumption can impair judgement and lead to disruptive behaviour"
               li2="Delays: Can lead to heightened emotions and impatience among passengers"
               li3="Mental Health: Anxiety, panic attacks or other mental health conditions may lead to disruptive behaviour"
               li4="Miscommunication: Breakdowns in communication may lead to tense situations"

@@ -181,7 +181,7 @@ const Features = () => {
               className="text-base sm:text-lg text-amber-400 mb-2"
               style={{ fontFamily: "'Dancing Script', cursive" }}
             >
-              Why Choose SkyHigh
+              Why Choose SkyCrew
             </h3>
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-green-900 mb-4">
               We Deliver <span className="text-amber-400">Excellence</span> in
@@ -204,7 +204,7 @@ const Features = () => {
             <div className="relative rounded-3xl overflow-hidden shadow-lg">
               <img
                 src={images[currentImageIndex]}
-                alt="Why Choose SkyHigh"
+                alt="Why Choose SkyCrew"
                 className="w-full h-[200px] sm:h-[300px] lg:h-[400px] object-cover transition-opacity duration-500 ease-in-out"
                 style={{ opacity: 1 }}
                 loading="lazy"

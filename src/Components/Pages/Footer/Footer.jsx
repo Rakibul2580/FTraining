@@ -16,8 +16,8 @@ const Footer = () => {
           <div>
             <h3 className="text-xl font-bold mb-4">About Mystery Quest</h3>
             <p className="text-gray-400">
-              Mystery Quest is a platform for puzzle enthusiasts to solve
-              exciting riddles and unlock hidden secrets.
+              SkyCrew is a platform for puzzle enthusiasts to solve exciting
+              riddles and unlock hidden secrets.
             </p>
           </div>
 

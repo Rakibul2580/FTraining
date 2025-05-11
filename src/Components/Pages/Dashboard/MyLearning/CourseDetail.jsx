@@ -1,7 +1,8 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CourseDetail = () => {
+  const title = useParams().title;
   // Static data for CPD 30 - July 24
   const course = {
     title: "CPD 30 - July 24",
@@ -88,7 +89,7 @@ const CourseDetail = () => {
                     }}
                   ></div>
                   {/* Text in Center */}
-                  <div className="text-center">
+                  <div className="text-center text-green-800">
                     <div className="text-2xl font-bold">20%</div>
                     <div className="text-sm">Complete</div>
                   </div>
@@ -164,6 +165,22 @@ const CourseDetail = () => {
               >
                 Launch Course
               </Link>
+
+              {title.slice(0, 6) === "CPD 30" ? (
+                <Link
+                  to="/courses/CPD30"
+                  className="bg-amber-400 text-green-900 px-6 py-2 rounded-br-none rounded-full font-semibold hover:bg-[#e6c200] transition-colors duration-300"
+                >
+                  {title.slice(0, 6)}
+                </Link>
+              ) : (
+                <Link
+                  to="/courses/CPD33"
+                  className="bg-amber-400 text-green-900 px-6 py-2 rounded-br-none rounded-full font-semibold hover:bg-[#e6c200] transition-colors duration-300"
+                >
+                  {title.slice(0, 6)}
+                </Link>
+              )}
             </div>
           </div>
         </div>

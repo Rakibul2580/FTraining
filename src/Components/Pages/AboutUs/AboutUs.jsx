@@ -12,9 +12,9 @@ const AboutUs = () => {
       >
         <h1 className="text-3xl font-bold text-gray-900 mb-6">About Us</h1>
         <p className="text-gray-700 mb-4">
-          Welcome to Mystery Quest, where every puzzle is a new adventure! Our
-          mission is to challenge your mind and spark your curiosity with
-          exciting riddles and mysteries.
+          Welcome to SkyCrew, where every puzzle is a new adventure! Our mission
+          is to challenge your mind and spark your curiosity with exciting
+          riddles and mysteries.
         </p>
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -25,9 +25,8 @@ const AboutUs = () => {
             Our Story
           </h2>
           <p className="text-gray-700 mb-4">
-            Founded in 2023, Mystery Quest was created by a team of puzzle
-            enthusiasts who wanted to share their love for brain teasers with
-            the world.
+            Founded in 2023, SkyCrew was created by a team of puzzle enthusiasts
+            who wanted to share their love for brain teasers with the world.
           </p>
         </motion.div>
         <motion.div

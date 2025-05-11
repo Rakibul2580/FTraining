@@ -1,5 +1,93 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import CPD30 from "./CPD30";
+import CPD33 from "./CPD33";
+import CC_Videos from "./CC_Videos";
+
+const data = [
+  {
+    category: "CPD 30",
+    id: 1,
+    items: [
+      {
+        title: "safety",
+        subTitle: [
+          "CPD30 - Disruptive Passengers",
+          "CPD30 - Cabin Secure",
+          "SCORM package CPD30 - CDF PA's",
+        ],
+      },
+      { title: "customer service", subTitle: ["CSAT, POSI and FLEET HUB"] },
+      { title: "quiz", subTitle: ["CPD30 - Quiz"] },
+    ],
+  },
+  {
+    category: "CPD 33",
+    id: 2,
+    items: [
+      {
+        title: "safety",
+        subTitle: [
+          "First Aid - Universal Approach",
+          "Summary of First Aid Amendments",
+        ],
+      },
+      {
+        title: "customer service",
+        subTitle: ["Fraud & Pilferage", "Outstanding Customer Care"],
+      },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+    ],
+  },
+  {
+    category: "Marketing",
+    id: 3,
+    items: [
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+    ],
+  },
+  {
+    category: "Business",
+    id: 4,
+    items: [
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+    ],
+  },
+  {
+    category: "Finance",
+    id: 5,
+    items: [
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+      { title: "", subTitle: [] },
+    ],
+  },
+  {
+    category: "Health",
+    id: 6,
+    items: [{ title: "Nutrition", subTitle: ["Diet", "Wellness"] }],
+  },
+];
 
 const MyLearning = () => {
   const trainingItems = [
@@ -151,7 +239,7 @@ const MyLearning = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {videos.map((video, index) => (
-              <Link to={`/courses/${video.title}`} key={index}>
+              <Link to="/courses/CC&Videos" key={index}>
                 <div className="bg-white p-6 rounded-3xl rounded-bl-none shadow-lg hover:shadow-xl transition-shadow border border-amber-400">
                   <h3 className="text-xl font-semibold text-green-900 mb-2">
                     {video.title}

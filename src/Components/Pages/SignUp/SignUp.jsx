@@ -9,9 +9,9 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
   const [age, setAge] = useState("");
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState("user");
   const [gender, setGender] = useState("");
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState("pending");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
@@ -22,11 +22,11 @@ const SignUp = () => {
     setSuccess("");
 
     const url = isLogin
-      ? "https://ftraining-18rregde7-rakibul2580s-projects.vercel.app/login"
-      : "https://ftraining-18rregde7-rakibul2580s-projects.vercel.app/signup";
+      ? "http://localhost:5000/login"
+      : "http://localhost:5000/signup";
     const data = isLogin
       ? { email, password }
-      : { email, password, name, age, role, gender };
+      : { email, password, name, age, status, role, gender, date: new Date() };
 
     try {
       const response = await axios.post(url, data);
@@ -131,21 +131,6 @@ const SignUp = () => {
                       required
                       whileFocus="focus"
                     />
-                  </motion.div>
-                  <motion.div className="mb-4" variants={inputVariants}>
-                    <label className="block text-green-900 mb-1">Role</label>
-                    <motion.select
-                      value={role}
-                      onChange={(e) => setRole(e.target.value)}
-                      className="w-full p-2 border rounded-full focus:outline-none focus:ring-2 focus:ring-amber-400 text-green-900"
-                      required
-                      whileFocus="focus"
-                    >
-                      <option value="">Select Role</option>
-                      <option value="student">Student</option>
-                      <option value="instructor">Instructor</option>
-                      <option value="admin">Admin</option>
-                    </motion.select>
                   </motion.div>
                   <motion.div className="mb-4" variants={inputVariants}>
                     <label className="block text-green-900 mb-1">Gender</label>

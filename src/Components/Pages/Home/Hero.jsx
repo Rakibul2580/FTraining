@@ -7,7 +7,7 @@ const slides = [
     image: "https://i.ibb.co/S7mcd1bv/image13.jpg",
     heading: "Launch Your Aviation Career",
     subheading:
-      "Join SkyHigh Pilot Training for world-class flight instruction!",
+      "Join SkyCrew Pilot Training for world-class flight instruction!",
   },
   {
     image: "https://i.ibb.co/S7mcd1bv/image13.jpg",

@@ -13,6 +13,9 @@ import CourseDetail from "../Pages/Dashboard/MyLearning/CourseDetail";
 import CoursesView from "../Pages/Dashboard/MyLearning/CoursesView";
 import Video from "../Pages/Dashboard/MyLearning/Video";
 import Dashboard from "../Pages/Dashboard/Dashboard";
+import CPD30 from "../Pages/Dashboard/MyLearning/CPD30";
+import CPD33 from "../Pages/Dashboard/MyLearning/CPD33";
+import CC_Videos from "../Pages/Dashboard/MyLearning/CC_Videos";
 
 export const router = createBrowserRouter([
   {
@@ -77,6 +80,9 @@ export const router = createBrowserRouter([
       { path: "/reset-password", element: <ResetPassword /> },
       { path: "/course/:title", element: <CourseDetail /> },
       { path: "/courses/:view", element: <CoursesView /> },
+      { path: "/courses/CPD30", element: <CPD30 /> },
+      { path: "/courses/CPD33", element: <CPD33 /> },
+      { path: "/courses/CC&Videos", element: <CC_Videos /> },
       { path: "/videos/:view", element: <Video /> },
     ],
   },

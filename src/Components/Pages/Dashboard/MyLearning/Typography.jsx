@@ -73,7 +73,7 @@ const Typography = ({ h1, h2, p, li1, li2, li3, li4, li5, div, img }) => {
         }, index * 5000); // প্রতিটি এলিমেন্টের ফেইড-ইন ডিলে
       }
     });
-  }, [h1, h2, p, li1, li2, li3, li4, div, img]); // প্রপস পরিবর্তন হলে useEffect আবার চলবে
+  }, [h1, h2, p, li1, li2, li3, li4, li5, div, img]); // প্রপস পরিবর্তন হলে useEffect আবার চলবে
 
   // JSX রিটার্ন: UI রেন্ডার করা
   return (
