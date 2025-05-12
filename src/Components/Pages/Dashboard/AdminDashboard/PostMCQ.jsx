@@ -36,9 +36,13 @@ const PostMCQ = ({
     try {
       const token = getToken();
       if (!token) return;
-      const result = await axios.post("http://localhost:5000/api/mcq", mcq, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const result = await axios.post(
+        "https://ftraining-s.vercel.app//api/mcq",
+        mcq,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setMcq({
         question: "",
         options: ["", "", "", ""],

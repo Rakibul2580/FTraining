@@ -44,7 +44,7 @@ const PostSlide = ({
     try {
       const token = getToken();
       if (!token) return;
-      await axios.post("http://localhost:5000/api/slide", slideData, {
+      await axios.post("https://ftraining-s.vercel.app//api/slide", slideData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setSlideData({
@@ -75,7 +75,7 @@ const PostSlide = ({
       try {
         const token = getToken();
         if (!token) return;
-        await axios.delete(`http://localhost:5000/api/slide/${id}`, {
+        await axios.delete(`https://ftraining-s.vercel.app//api/slide/${id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         await fetchSlides();

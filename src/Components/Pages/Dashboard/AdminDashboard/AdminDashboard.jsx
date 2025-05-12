@@ -81,9 +81,12 @@ const AdminDashboard = ({ user, data }) => {
     try {
       const token = getToken();
       if (!token) return;
-      const response = await axios.get("http://localhost:5000/api/slides", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://ftraining-s.vercel.app//api/slides",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setSlides(response.data || []);
     } catch (error) {
       console.error("Error fetching slides:", error);
@@ -95,9 +98,12 @@ const AdminDashboard = ({ user, data }) => {
     try {
       const token = getToken();
       if (!token) return;
-      const response = await axios.get("http://localhost:5000/api/users", {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      const response = await axios.get(
+        "https://ftraining-s.vercel.app//api/users",
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       setUsers(response.data || []);
     } catch (error) {
       console.error("Error fetching users:", error);
@@ -139,7 +145,7 @@ const AdminDashboard = ({ user, data }) => {
         const token = getToken();
         if (!token) return;
         await axios.put(
-          `http://localhost:5000/api/user/role/${email}`,
+          `https://ftraining-s.vercel.app//api/user/role/${email}`,
           { role },
           {
             headers: { Authorization: `Bearer ${token}` },

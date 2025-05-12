@@ -43,9 +43,12 @@ const Dashboard = () => {
     const token = localStorage.getItem("token");
     if (token) {
       try {
-        const response = await axios.get("http://localhost:5000/api/user", {
-          headers: { Authorization: `Bearer ${token}` },
-        });
+        const response = await axios.get(
+          "https://ftraining-s.vercel.app//api/user",
+          {
+            headers: { Authorization: `Bearer ${token}` },
+          }
+        );
         setUser(response.data);
       } catch (error) {
         console.error("Fetch user failed:", error);
