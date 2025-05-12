@@ -44,7 +44,7 @@ const Dashboard = () => {
     if (token) {
       try {
         const response = await axios.get(
-          "https://ftraining-s.vercel.app//api/user",
+          "https://ftraining-s.vercel.app/api/user",
           {
             headers: { Authorization: `Bearer ${token}` },
           }

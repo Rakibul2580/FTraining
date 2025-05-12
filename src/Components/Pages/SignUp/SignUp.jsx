@@ -22,8 +22,8 @@ const SignUp = () => {
     setSuccess("");
 
     const url = isLogin
-      ? "https://ftraining-s.vercel.app//login"
-      : "https://ftraining-s.vercel.app//signup";
+      ? "https://ftraining-s.vercel.app/login"
+      : "https://ftraining-s.vercel.app/signup";
     const data = isLogin
       ? { email, password }
       : { email, password, name, age, status, role, gender, date: new Date() };

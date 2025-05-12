@@ -21,7 +21,7 @@ const ResetPassword = () => {
 
     try {
       const response = await axios.post(
-        "https://ftraining-s.vercel.app//reset-password",
+        "https://ftraining-s.vercel.app/reset-password",
         {
           token,
           newPassword,

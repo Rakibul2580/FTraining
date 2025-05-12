@@ -82,7 +82,7 @@ const AdminDashboard = ({ user, data }) => {
       const token = getToken();
       if (!token) return;
       const response = await axios.get(
-        "https://ftraining-s.vercel.app//api/slides",
+        "https://ftraining-s.vercel.app/api/slides",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -99,7 +99,7 @@ const AdminDashboard = ({ user, data }) => {
       const token = getToken();
       if (!token) return;
       const response = await axios.get(
-        "https://ftraining-s.vercel.app//api/users",
+        "https://ftraining-s.vercel.app/api/users",
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -145,7 +145,7 @@ const AdminDashboard = ({ user, data }) => {
         const token = getToken();
         if (!token) return;
         await axios.put(
-          `https://ftraining-s.vercel.app//api/user/role/${email}`,
+          `https://ftraining-s.vercel.app/api/user/role/${email}`,
           { role },
           {
             headers: { Authorization: `Bearer ${token}` },

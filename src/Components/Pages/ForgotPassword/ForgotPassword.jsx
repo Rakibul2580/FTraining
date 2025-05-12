@@ -21,8 +21,8 @@ const ForgotPassword = () => {
     setIsLoading(true);
 
     const url = isResetForm
-      ? "https://ftraining-s.vercel.app//reset-password"
-      : "https://ftraining-s.vercel.app//forgot-password";
+      ? "https://ftraining-s.vercel.app/reset-password"
+      : "https://ftraining-s.vercel.app/forgot-password";
     const data = isResetForm ? { token, newPassword } : { email };
 
     try {
