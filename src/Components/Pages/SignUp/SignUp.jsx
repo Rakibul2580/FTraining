@@ -15,6 +15,7 @@ const SignUp = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
+  const courses = [];
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,7 +27,17 @@ const SignUp = () => {
       : "https://ftraining-s.vercel.app/signup";
     const data = isLogin
       ? { email, password }
-      : { email, password, name, age, status, role, gender, date: new Date() };
+      : {
+          email,
+          password,
+          name,
+          age,
+          status,
+          role,
+          gender,
+          courses,
+          date: new Date(),
+        };
 
     try {
       const response = await axios.post(url, data);

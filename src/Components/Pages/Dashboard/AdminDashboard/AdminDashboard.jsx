@@ -16,11 +16,14 @@ import {
   FaXbox,
   FaXing,
   FaXingSquare,
+  FaBook,
 } from "react-icons/fa";
 import PostSlide from "./PostSlide";
 import PostMCQ from "./PostMCQ";
 import UserRoles from "./UserRoles";
 import { FaXmark, FaXTwitter } from "react-icons/fa6";
+import Navbar from "../../Navbar/Navbar";
+import UsersCourses from "./UsersCourses";
 
 // Check if #root exists before setting Modal app element
 if (document.getElementById("root")) {
@@ -66,7 +69,7 @@ const AdminDashboard = ({ user, data }) => {
   const [modalAction, setModalAction] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [sidebar, setSideBar] = useState("Post Slide");
+  const [sidebar, setSideBar] = useState("User Courses");
 
   const getToken = () => {
     const token = localStorage.getItem("token");
@@ -245,6 +248,7 @@ const AdminDashboard = ({ user, data }) => {
           { op: "Post Slide", cl: "Slide", icon: <FaHeading /> },
           { op: "Post MCQ", cl: "MCQ", icon: <FaQuestionCircle /> },
           { op: "User Management", cl: "Users", icon: <FaUsers /> },
+          { op: "User Courses", cl: "UsersCourses", icon: <FaBook /> },
         ].map((item, i) => (
           <motion.button
             className="flex items-center text-left cursor-pointer my-1 py-1 px-2 rounded hover:bg-amber-400 hover:text-blue-950 transition-colors duration-200"
@@ -269,89 +273,95 @@ const AdminDashboard = ({ user, data }) => {
         ))}
       </motion.div>
       <motion.div
-        className="p-6 bg-emerald-200 text-white min-h-screen"
+        className="bg-emerald-200 text-white min-h-screen"
         animate={{
           marginLeft: isSidebarOpen ? 250 : 60,
           width: isSidebarOpen ? "calc(100% - 250px)" : "calc(100% - 60px)",
         }}
       >
-        <motion.h1
-          className="text-4xl font-bold mb-8 text-green-900 text-center"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-        >
-          Admin Dashboard
-        </motion.h1>
-
-        {/* Slide Management */}
-        {sidebar === "Post Slide" && (
-          <PostSlide
-            confirmAction={confirmAction}
-            getToken={getToken}
-            data={data}
-            InputField={InputField}
-            Button={Button}
-            fetchSlides={fetchSlides}
-            setSlides={setSlides}
-            slides={slides}
-          />
-        )}
-
-        {/* MCQ Management */}
-        {sidebar === "Post MCQ" && (
-          <PostMCQ
-            InputField={InputField}
-            Button={Button}
-            cardVariants={cardVariants}
-            data={data}
-            slides={slides}
-            getToken={getToken}
-          />
-        )}
-
-        {/* User Role Management */}
-        {sidebar === "User Management" && (
-          <UserRoles
-            confirmAction={confirmAction}
-            cardVariants={cardVariants}
-            users={users}
-            updateUserRole={updateUserRole}
-          />
-        )}
-
-        {/* Confirmation Modal */}
-        <Modal
-          isOpen={modalIsOpen}
-          onRequestClose={() => setModalIsOpen(false)}
-          className="bg-blue-900 p-6 rounded-lg max-w-md mx-auto mt-20 text-white"
-          overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-        >
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.3 }}
+        <Navbar />
+        <div className="p-6">
+          <motion.h1
+            className="text-4xl font-bold mb-8 text-green-900 text-center"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <h2 className="text-xl font-semibold mb-4 text-amber-400">
-              Confirm Action
-            </h2>
-            <p className="mb-4 text-green-500">
-              Are you sure you want to proceed with this action?
-            </p>
-            <div className="flex justify-end space-x-4">
-              <Button
-                onClick={() => setModalIsOpen(false)}
-                className="bg-blue-950"
-              >
-                <FaTimesCircle className="mr-2 text-amber-400" />{" "}
-                <span className="text-amber-400">Cancel</span>
-              </Button>
-              <Button onClick={executeAction}>
-                <FaCheckCircle className="mr-2" /> Confirm
-              </Button>
-            </div>
-          </motion.div>
-        </Modal>
+            Admin Dashboard
+          </motion.h1>
+
+          {/* Slide Management */}
+          {sidebar === "Post Slide" && (
+            <PostSlide
+              confirmAction={confirmAction}
+              getToken={getToken}
+              data={data}
+              InputField={InputField}
+              Button={Button}
+              fetchSlides={fetchSlides}
+              setSlides={setSlides}
+              slides={slides}
+            />
+          )}
+
+          {/* MCQ Management */}
+          {sidebar === "Post MCQ" && (
+            <PostMCQ
+              InputField={InputField}
+              Button={Button}
+              cardVariants={cardVariants}
+              data={data}
+              slides={slides}
+              getToken={getToken}
+            />
+          )}
+
+          {/* User Role Management */}
+          {sidebar === "User Management" && (
+            <UserRoles
+              confirmAction={confirmAction}
+              cardVariants={cardVariants}
+              users={users}
+              updateUserRole={updateUserRole}
+            />
+          )}
+
+          {/* User Courses Management */}
+          {sidebar === "User Courses" && <UsersCourses />}
+
+          {/* Confirmation Modal */}
+          <Modal
+            isOpen={modalIsOpen}
+            onRequestClose={() => setModalIsOpen(false)}
+            className="bg-blue-900 p-6 rounded-lg max-w-md mx-auto mt-20 text-white"
+            overlayClassName="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
+          >
+            <motion.div
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.3 }}
+            >
+              <h2 className="text-xl font-semibold mb-4 text-amber-400">
+                Confirm Action
+              </h2>
+              <p className="mb-4 text-green-500">
+                Are you sure you want to proceed with this action?
+              </p>
+              <div className="flex justify-end space-x-4">
+                <Button
+                  onClick={() => setModalIsOpen(false)}
+                  className="bg-blue-950"
+                >
+                  <FaTimesCircle className="mr-2 text-amber-400" />{" "}
+                  <span className="text-amber-400">Cancel</span>
+                </Button>
+                <Button onClick={executeAction}>
+                  <FaCheckCircle className="mr-2" /> Confirm
+                </Button>
+              </div>
+            </motion.div>
+          </Modal>
+        </div>
       </motion.div>
     </div>
   );

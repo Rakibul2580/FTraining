@@ -1,8 +1,11 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useCallback, useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import CPD30 from "./CPD30";
 import CPD33 from "./CPD33";
 import CC_Videos from "./CC_Videos";
+import { nav } from "framer-motion/client";
+import axios from "axios";
+import UserContext from "../../../UserProvider/UserProvider";
 
 const data = [
   {
@@ -90,6 +93,8 @@ const data = [
 ];
 
 const MyLearning = () => {
+  const navigate = useNavigate();
+  const { user } = useContext(UserContext);
   const trainingItems = [
     {
       title: "CPD 30 - July 24",
@@ -170,6 +175,15 @@ const MyLearning = () => {
     },
   ];
 
+  const checkPermission = (data) => {
+    const course = user?.courses?.find((course) => course.course === data);
+    if (!course) {
+      navigate(`/enrollment/${encodeURIComponent(data)}`);
+    } else {
+      navigate(`/course/${encodeURIComponent(data)}`);
+    }
+  };
+
   return (
     <section className="py-10" style={{ fontFamily: "'Georgia', serif" }}>
       <div className="container mx-auto px-4">
@@ -197,34 +211,35 @@ const MyLearning = () => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {trainingItems.map((item, index) => (
-              <Link
-                to={`/course/${encodeURIComponent(item.title)}`}
+              <button
+                onClick={() => checkPermission(item?.title)}
                 key={index}
+                className="cursor-pointer text-left"
               >
                 <div className="bg-white p-6 rounded-3xl rounded-bl-none shadow-lg hover:shadow-xl transition-shadow border border-amber-400">
                   <h3 className="text-xl font-semibold text-green-900 mb-2">
-                    {item.title}
+                    {item?.title}
                   </h3>
                   <p className="text-green-900 text-base mb-1">
-                    Due: {item.dueDate}
+                    Due: {item?.dueDate}
                   </p>
                   <p
                     className={`text-base ${
-                      item.status === "Overdue"
+                      item?.status === "Overdue"
                         ? "text-red-600"
                         : "text-amber-400"
                     }`}
                   >
-                    Status: {item.status}
+                    Status: {item?.status}
                   </p>
                   <p className="text-green-900 text-base mb-1">
-                    Classification: {item.classification}
+                    Classification: {item?.classification}
                   </p>
                   <p className="text-green-900 text-base">
                     Renewal Required? {item.renewalRequired}
                   </p>
                 </div>
-              </Link>
+              </button>
             ))}
           </div>
         </div>

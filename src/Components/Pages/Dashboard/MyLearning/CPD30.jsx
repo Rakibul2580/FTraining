@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion"; // Import framer-motion // Import Heading from CPD30
+import { Link } from "react-router-dom";
 
 // Reusable Heading Component
 const Heading = React.memo(({ children }) => (
@@ -33,13 +34,15 @@ const Section = ({ children, className = "" }) => (
 // Reusable TopicItem Component
 const TopicItem = ({ title, dependency, linkText, linkHref }) => (
   <li className="space-y-2">
-    <strong className="block">{title}</strong>
+    <strong className="block text-amber-900">
+      <Link to={`/videos/${linkHref}`}>{title}</Link>
+    </strong>
     {dependency && (
       <strong className="ml-3 block text-sm text-gray-600">
         Not available unless: The activity{" "}
-        <a href={linkHref} className="text-green-700 underline">
+        <Link to={linkHref} className="text-green-700 underline">
           {linkText}
-        </a>{" "}
+        </Link>{" "}
         is marked complete
       </strong>
     )}
@@ -151,18 +154,21 @@ const CPD30 = () => {
               <Heading>Topic Outline SAFETY</Heading>
             </header>
             <ul className="list-disc pl-5 space-y-5">
-              <TopicItem title="CPD30 - Disruptive Passengers" />
+              <TopicItem
+                linkHref="Disruptive Passengers"
+                title="CPD30 - Disruptive Passengers"
+              />
               <TopicItem
                 title="CPD30 - Cabin Secure"
                 dependency
                 linkText="CPD30 - Disruptive Passengers"
-                linkHref="#"
+                linkHref="Cabin Secure"
               />
               <TopicItem
                 title="CPD30 - CDF PA's"
                 dependency
                 linkText="CPD30 - Cabin Secure"
-                linkHref="#"
+                linkHref="CDF PA's"
               />
             </ul>
           </div>

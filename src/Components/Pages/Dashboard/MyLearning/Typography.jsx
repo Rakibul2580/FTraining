@@ -25,7 +25,7 @@ const Typography = ({ h1, h2, p, li1, li2, li3, li4, li5, div, img }) => {
     let i = 0;
 
     const interval = setInterval(() => {
-      if (i < text.length) {
+      if (i < text?.length) {
         setText(text.substring(0, i + 1));
         i++;
       } else {

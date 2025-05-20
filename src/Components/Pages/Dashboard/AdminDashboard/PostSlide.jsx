@@ -10,10 +10,22 @@ import {
   FaImage,
   FaCheckDouble,
 } from "react-icons/fa";
-import { div } from "framer-motion/client";
+
+const CPD30 = [
+  "CPD30 - Disruptive Passengers",
+  "CPD30 - Cabin Secure",
+  "CPD30 - CDF PA's",
+  "CSAT, POSI and FLEET HUB",
+];
+
+const CPD33 = [
+  "First Aid - Universal Approach",
+  "Summary of First Aid Amendments",
+  "Fraud & Pilferage",
+  "Outstanding Customer Care",
+];
 
 const PostSlide = ({
-  data,
   fetchSlides,
   InputField,
   confirmAction,
@@ -22,8 +34,6 @@ const PostSlide = ({
   slides,
 }) => {
   const [error, setError] = useState(null);
-
-  const [slideIndex, setSlideIndex] = useState(0);
 
   const [slideData, setSlideData] = useState({
     h1: "",
@@ -39,6 +49,15 @@ const PostSlide = ({
     category: "",
     MCQ: [],
   });
+
+  console.log(slideData);
+  const [isOn, setIsOn] = useState("CPD30");
+  const [items, setItems] = useState([]);
+
+  const handleToggle = (data) => {
+    setIsOn(data);
+    setItems(data === "CPD30" ? CPD30 : CPD33);
+  };
 
   const postSlide = useCallback(async () => {
     try {
@@ -58,8 +77,7 @@ const PostSlide = ({
         li5: "",
         div: "",
         img: "",
-        category: "",
-        number: "",
+        category: slideData.category,
         MCQ: [],
       });
       await fetchSlides();
@@ -94,23 +112,55 @@ const PostSlide = ({
           <h2 className="text-xl font-bold font-serif">Post Slide</h2>
         </div>
 
+        <div className="flex p-6">
+          <AnimatePresence>
+            <motion.button
+              key="button1"
+              className={`px-6 py-3 ${
+                isOn === "CPD30"
+                  ? "bg-green-500 border-b-2 border-green-950 scale-100 transition duration-500"
+                  : "bg-red-700 scale-100 transition duration-500"
+              } rounded-l-lg text-white font-semibold shadow-md`}
+              animate={isOn ? "on" : "off"}
+              initial="off"
+              onClick={() => handleToggle("CPD30")}
+            >
+              CPD 30
+            </motion.button>
+          </AnimatePresence>
+
+          <AnimatePresence>
+            <motion.button
+              key="button2"
+              className={`px-6 py-3 ${
+                isOn === "CPD33"
+                  ? "bg-green-500 border-b-2 border-green-950 scale-100 transition duration-500"
+                  : "bg-red-700 scale-100 transition duration-500"
+              } rounded-r-lg text-white font-semibold shadow-md`}
+              animate={isOn ? "on" : "off"}
+              initial="off"
+              onClick={() => handleToggle("CPD33")}
+            >
+              CPD 33
+            </motion.button>
+          </AnimatePresence>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex items-center">
+          {/* <div className="flex items-center">
             <FaCheckDouble className="text-green-800 mr-2" />
             <select
               onChange={(e) => setSlideIndex(e.target.value)}
               className="w-full p-3 rounded-lg border border-green-900 text-green-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
               <option value="">Select Module Category</option>
-              {data.map((item, i) => (
-                <>
-                  <option key={i} value={i}>
-                    {item.category}
-                  </option>
-                </>
+              {items.map((item, i) => (
+                <option key={i} value={i}>
+                  {item.title}
+                </option>
               ))}
             </select>
-          </div>
+          </div> */}
 
           <div className="flex items-center">
             <FaCheckDouble className="text-green-800 mr-2" />
@@ -121,7 +171,7 @@ const PostSlide = ({
               className="w-full p-3 rounded-lg border border-green-900 text-green-800 focus:outline-none focus:ring-2 focus:ring-amber-400"
             >
               <option value="">Select Module Item</option>
-              {data[slideIndex].items.map((item, i) => (
+              {items.map((item, i) => (
                 <>
                   <option key={i} value={item}>
                     {item}
